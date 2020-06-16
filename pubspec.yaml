@@ -1,0 +1,43 @@
+name: covid19_santoamaro
+description: A new Flutter project. Created by Slidy
+
+publish_to: 'none' 
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  dio: ^3.0.9
+  flutter_mobx: ^1.1.0
+  mobx: ^1.2.1
+  flutter_modular: ^1.2.5+1
+  flutter:
+    sdk: flutter
+  date_format: ^1.0.8
+  bubble_tab_indicator: ^0.1.4
+  fl_chart: ^0.10.0
+
+dev_dependencies:
+  mockito: ^4.1.1
+  mobx_codegen: ^1.1.0
+  build_runner: ^1.10.0
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: "^0.7.0"
+
+flutter_icons:
+  ios: true
+  android: true
+  image_path_ios: "images/icon.png"
+  image_path_android: "images/icon.png"
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - images/
+
+scripts:
+  mobx: flutter pub get & flutter pub run build_runner watch --delete-conflicting-outputs
