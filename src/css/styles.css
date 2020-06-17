@@ -220,3 +220,25 @@ header div{
   font-size: 14px;
 }
 
+.creators{
+  margin-top: 10px;
+  text-align: center;
+  height: 110px;
+}
+
+.creators p{
+margin-top: 5px;
+font-size: 18px;
+} 
+
+i{
+  margin-left: 10px;
+}
+
+.creators a{
+  color: black;
+}
+
+.creators a:hover{
+  color: #4CAF50;
+}
