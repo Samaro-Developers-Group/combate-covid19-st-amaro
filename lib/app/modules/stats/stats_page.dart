@@ -95,7 +95,7 @@ class _StatsPageState extends ModularState<StatsPage, StatsController> {
                           ),
                           SizedBox(height: 10),
                           Text(
-                            '* Dados obtidos através do boletim epidemológico da Secretaria de Saúde do Estado da Bahia (Sesab)',
+                            '* Dados obtidos através do boletim epidemiológico da Secretaria de Saúde do Estado da Bahia (Sesab)',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 13,
