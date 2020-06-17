@@ -5,9 +5,11 @@ import 'package:covid19_santoamaro/app/models/cidade_model.dart';
 import 'package:covid19_santoamaro/app/utils/widgets/custom_app_bar.dart';
 import 'package:covid19_santoamaro/app/utils/widgets/stats_grid.dart';
 import 'package:date_format/date_format.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'stats_controller.dart';
 
 class StatsPage extends StatefulWidget {
@@ -103,15 +105,48 @@ class _StatsPageState extends ModularState<StatsPage, StatsController> {
                             textAlign: TextAlign.center,
                           ),
                           SizedBox(height: 10),
-                          Text(
-                            'Acesse: http://www.saude.ba.gov.br/temasdesaude/coronavirus',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 13,
+
+                          InkWell(
+                            onTap: () {
+                              launch(
+                                  'http://www.saude.ba.gov.br/temasdesaude/coronavirus');
+                            },
+                            child: RichText(
+                              textAlign: TextAlign.center,
+                              text: TextSpan(
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text: 'Acesse: ',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 13,
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    text:
+                                        'http://www.saude.ba.gov.br/temasdesaude/coronavirus',
+                                    style: TextStyle(
+                                      decoration: TextDecoration.underline,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 13,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                            textAlign: TextAlign.center,
                           ),
+
+                          // GestureDetector(
+                          //   child: Text(
+                          //     'Acesse: http://www.saude.ba.gov.br/temasdesaude/coronavirus',
+                          //     style: TextStyle(
+                          //       color: Colors.white,
+                          //       fontWeight: FontWeight.bold,
+                          //       fontSize: 13,
+                          //     ),
+                          //     textAlign: TextAlign.center,
+                          //   ),
+                          // ),
                         ],
                       );
                     },

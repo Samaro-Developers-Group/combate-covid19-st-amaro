@@ -4,6 +4,7 @@ import 'package:covid19_santoamaro/app/config/styles.dart';
 import 'package:covid19_santoamaro/app/utils/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'home_controller.dart';
 import 'package:covid19_santoamaro/app/utils/widgets/drawer_widget.dart';
 
@@ -69,7 +70,7 @@ SliverToBoxAdapter _buildHeader(double screenHeight, BuildContext context) {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                'Está se sentindo mal?',
+                'Dúvidas?',
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 22.0,
@@ -78,7 +79,7 @@ SliverToBoxAdapter _buildHeader(double screenHeight, BuildContext context) {
               ),
               SizedBox(height: screenHeight * 0.01),
               Text(
-                'Se estiver sentindo alguns dos sintomas da COVID-19, por favor entre em contato com a Sec. de Saúde do município',
+                'Se estiver com alguma dúvida, por favor entre em contato com a central de atendimento da Sec. de Saúde.',
                 style: const TextStyle(
                   color: Colors.white70,
                   fontSize: 15.0,
@@ -125,15 +126,78 @@ showAlertDialog(BuildContext context) {
     context: context,
     builder: (_) {
       return AlertDialog(
-        title: Text(
-          'Secretaria da Saúde',
-          style: TextStyle(
-            fontSize: 20,
-            color: Pallete.primaryColor,
-          ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30),
         ),
-        content: Text(
-          'Telefone: (75) 3241-2315',
+        title: Text(
+          'Contatos',
+          textAlign: TextAlign.center,
+        ),
+        actions: <Widget>[
+          Align(
+            alignment: Alignment.center,
+            child: FlatButton(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
+              color: Pallete.primaryColor,
+              child: Text('Voltar'),
+              onPressed: () {
+                Modular.to.pop();
+              },
+            ),
+          ),
+        ],
+        content: Container(
+          height: 100,
+          width: 100,
+          child: ListView(
+            physics: NeverScrollableScrollPhysics(),
+            children: <Widget>[
+              ListTile(
+                leading: Icon(
+                  Icons.call,
+                  color: Colors.grey,
+                ),
+                onTap: () {
+                  return launch("tel://32412315");
+                },
+                title: Text(
+                  '(75) 3241-2315',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey,
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: Tab(
+                  icon: Container(
+                    width: 30,
+                    height: 30,
+                    child: Image.asset(
+                      'images/zapes.png',
+                    ),
+                  ),
+                ),
+                onTap: () async {
+                  var phone = "+5575992680394";
+                  var whatsappUrl = "whatsapp://send?phone=$phone";
+                  await canLaunch(whatsappUrl)
+                      ? launch(whatsappUrl)
+                      : print(
+                          "open whatsapp app link or do a snackbar with notification that there is no whatsapp installed");
+                },
+                title: Text(
+                  '(75) 99268-0394',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.green,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       );
     },
