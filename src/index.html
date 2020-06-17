@@ -9,31 +9,66 @@
 
 
     <link rel="stylesheet" href = "./css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Ubuntu&display=swap" rel="stylesheet">
 
   </head>
 
   <body>
+    
+    <header>
+      <nav class="menu">
+        <h1>Institudo Federal de Ciências e tecnologia da Bahia</h1>
+        <ul>
+          <li><a   href="index.html">Página inicial</a></li>
+          <li><a   href="#situacao">Situação</a></li>
+          <li><a  href="#graficos">Graficos </a></li>
+          <li><a  href="#mapa">Mapa </a></li>
+          <li><a  href="#dicas">Dicas </a></li>
+          <li><a  href="#graficos">Sobre </a></li>
+          
+        </ul>
+    </nav>
+    
+    <div>
+			<h1 class="site-title">COVID-19 Santo Amaro</h1>
+			<h2 class="site-subtitle">Seu portal de informações sobre o progresso do COVID-19 na cidade de Santo Amaro - Bahia</h2>
+			<img src ="css/img/logo.png" alt="logo"/>
+		
+		
+		</div>
+    </header>
 
-    <footer>
-      <h1>Instituto Federal de Educação, Ciências e Tecnologia da Bahia</h1>
-    </footer>
+    <section class ="situacao" id="situacao">
 
-    <main>
-
-      <div class ="containersGroup">
-        <div class = "contaminados">
-          <span>Confirmados:</span>
+      <div class = "card-group">
+        <div class = "card contaminados">
           <h1>0</h1>
+          <span>Contaminados</span>
         </div>
-        <div class = "mortos">
-          <span>Mortos:</span>
+
+        <div class = "card mortos">
           <h1>0</h1>
+          <span>mortos</span>
         </div>
+        <div class = "card percentual">
+          <h1>0</h1>
+          <span>Percentual de Mortes</span>
+        </div>
+
+        <div class = "card att">
+          <h1>dd/mm/yyyu</h1>
+          <span>Ultima atualização</span>
+        </div>
+
       </div>
-      
-    </main>
+       
+    </section>
 
+    <section id ="graficos" class = "graficos">
+
+    </section>
+
+      
+    
     
 
     <script src="./service/index.js"></script>
