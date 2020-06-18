@@ -1,10 +1,12 @@
 import 'package:covid19_santoamaro/app/config/pallete.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CustomDialog extends StatelessWidget {
   final String title;
   final String description1;
   final String description2;
+  final String description3;
   final String buttonText;
   final Image image;
 
@@ -13,6 +15,7 @@ class CustomDialog extends StatelessWidget {
       this.title,
       this.description1,
       this.description2,
+        this.description3,
       this.buttonText,
       this.image})
       : super(key: key);
@@ -104,6 +107,34 @@ class CustomDialog extends StatelessWidget {
                   ],
                 ),
               ),
+              SizedBox(height: 10),
+              GestureDetector(
+                onTap: () {
+                  launch(
+                      'http://www.saude.ba.gov.br/temasdesaude/coronavirus/notas-tecnicas-e-boletins-epidemiologicos-covid-19/');
+                },
+                child: RichText(
+                  text: TextSpan(
+                    text: 'Acesse: ',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: description3,
+                        style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          fontWeight: FontWeight.normal,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
               SizedBox(
                 height: 24,
               ),

@@ -75,7 +75,7 @@ class _StatsPageState extends ModularState<StatsPage, StatsController> {
 
                       return Column(
                         children: <Widget>[
-                          SizedBox(height: 30),
+                          SizedBox(height: 20),
                           ListView.builder(
                             shrinkWrap: true,
                             itemCount: list.length,
@@ -96,57 +96,55 @@ class _StatsPageState extends ModularState<StatsPage, StatsController> {
                             },
                           ),
                           SizedBox(height: 10),
+//                          Text(
+//                            '* Dados obtidos através do boletim epidemiológico da Secretaria de Saúde do Estado da Bahia (Sesab)',
+//                            style: TextStyle(
+//                              color: Colors.white,
+//                              fontSize: 13,
+//                            ),
+//                            textAlign: TextAlign.center,
+//                          ),
+                          SizedBox(height: 20),
+
+
                           Text(
-                            '* Dados obtidos através do boletim epidemiológico da Secretaria de Saúde do Estado da Bahia (Sesab)',
+                            '* ATENÇÃO: Os dados não são resgatados diretamente da Prefeitura Municipal de Santo Amaro. Quanto a ausência do número de recuperados, informamos que os dados da Sesab não informam o número de recuperados, então optamos, em respeito à qualidade dos dados, não fazer um número impreciso ao aplicativo até que entremos em contato com a Prefeitura',
+//                            textAlign: TextAlign.center,
+                          textAlign: TextAlign.justify,
                             style: TextStyle(
-                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
                               fontSize: 13,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                          SizedBox(height: 10),
-
-                          InkWell(
-                            onTap: () {
-                              launch(
-                                  'http://www.saude.ba.gov.br/temasdesaude/coronavirus');
-                            },
-                            child: RichText(
-                              textAlign: TextAlign.center,
-                              text: TextSpan(
-                                children: <TextSpan>[
-                                  TextSpan(
-                                    text: 'Acesse: ',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 13,
-                                    ),
-                                  ),
-                                  TextSpan(
-                                    text:
-                                        'http://www.saude.ba.gov.br/temasdesaude/coronavirus',
-                                    style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 13,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                              color: Colors.white,
                             ),
                           ),
 
-                          // GestureDetector(
-                          //   child: Text(
-                          //     'Acesse: http://www.saude.ba.gov.br/temasdesaude/coronavirus',
-                          //     style: TextStyle(
-                          //       color: Colors.white,
-                          //       fontWeight: FontWeight.bold,
-                          //       fontSize: 13,
-                          //     ),
-                          //     textAlign: TextAlign.center,
-                          //   ),
-                          // ),
+//                          GestureDetector(
+
+//                            child: RichText(
+////                              textAlign: TextAlign.center,
+//                              text: TextSpan(
+//                                children: <TextSpan>[
+//                                  TextSpan(
+//                                    text: 'Acesse: ',
+//                                    style: TextStyle(
+//                                      fontWeight: FontWeight.bold,
+//                                      fontSize: 13,
+//                                    ),
+//                                  ),
+//                                  TextSpan(
+//                                    text:
+//                                    'http://www.saude.ba.gov.br/temasdesaude/coronavirus/notas-tecnicas-e-boletins-epidemiologicos-covid-19/',
+//                                    style: TextStyle(
+//                                      decoration: TextDecoration.underline,
+//                                      fontWeight: FontWeight.bold,
+//                                      fontSize: 13,
+//                                    ),
+//                                  ),
+//                                ],
+//                              ),
+//                            ),
+//                          ),
+
                         ],
                       );
                     },
@@ -162,7 +160,13 @@ class _StatsPageState extends ModularState<StatsPage, StatsController> {
 
   SliverPadding _buildHeader() {
     return SliverPadding(
-      padding: const EdgeInsets.all(20.0),
+//      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.only(
+        top: 10,
+        right: 20,
+        left: 20,
+        bottom: 20,
+      ),
       sliver: SliverToBoxAdapter(
         child: Text(
           'Estatísticas',
@@ -177,6 +181,18 @@ class _StatsPageState extends ModularState<StatsPage, StatsController> {
   }
 
   SliverToBoxAdapter _buildRegionTabBar() {
+
+//    return SliverToBoxAdapter(
+//      child: Text('Santo Amaro - BA',
+//        textAlign: TextAlign.center,
+//        style: TextStyle(
+//          color: Colors.white,
+//          fontSize: 18,
+//          fontWeight: FontWeight.bold,
+//        ),
+//      ),
+//    );
+
     return SliverToBoxAdapter(
       child: DefaultTabController(
         length: 1,
@@ -194,7 +210,6 @@ class _StatsPageState extends ModularState<StatsPage, StatsController> {
               indicatorColor: Colors.white,
             ),
             labelStyle: Styles.tabTextStyle,
-            labelColor: Colors.black,
             unselectedLabelColor: Colors.white,
             tabs: <Widget>[
               Text(
@@ -206,8 +221,9 @@ class _StatsPageState extends ModularState<StatsPage, StatsController> {
             ],
             onTap: (index) {},
           ),
-        ),
+//        ),
       ),
+    ),
     );
   }
 }

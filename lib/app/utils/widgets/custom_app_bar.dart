@@ -34,6 +34,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                       'Secretarias de Saúde das Unidades Federativas, dados tratados por Álvaro Justen e equipe de voluntários Brasil.IO',
                   description2:
                       'Brasil.IO: boletins epidemiológicos da COVID-19 por município por dia, disponível em: https://brasil.io/dataset/covid19/  acesso em 16 de Junho de 2020).',
+                  description3: 'http://www.saude.ba.gov.br/temasdesaude/coronavirus/notas-tecnicas-e-boletins-epidemiologicos-covid-19/',
                 );
               },
             );
