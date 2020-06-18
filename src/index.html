@@ -9,6 +9,9 @@
 
 
     <link rel="stylesheet" href = "./css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://kit.fontawesome.com/53293b5bbd.js" crossorigin="anonymous"></script>
+
 
   </head>
 
@@ -18,12 +21,9 @@
       <nav class="menu">
         <h1>Institudo Federal de Ciências e tecnologia da Bahia</h1>
         <ul>
-          <li><a   href="index.html">Página inicial</a></li>
-          <li><a   href="#situacao">Situação</a></li>
-          <li><a  href="#graficos">Graficos </a></li>
-          <li><a  href="#mapa">Mapa </a></li>
-          <li><a  href="#dicas">Dicas </a></li>
-          <li><a  href="#graficos">Sobre </a></li>
+          <li><a   href="index.html"><i class="fas fa-home"></i> Página inicial</a></li>
+          <li><a   href="#situacao"><i class="fas fa-exclamation-circle"></i> Situação</a></li>
+          <li><a  href="#fonte"><i class="fas fa-id-badge"></i> Fonte e Licença </a></li>
           
         </ul>
     </nav>
@@ -31,7 +31,10 @@
     <div>
 			<h1 class="site-title">COVID-19 Santo Amaro</h1>
 			<h2 class="site-subtitle">Seu portal de informações sobre o progresso do COVID-19 na cidade de Santo Amaro - Bahia</h2>
-			<img src ="css/img/logo.png" alt="logo"/>
+      <h3>Dados obtidos através do boleim epidemológico da Secretaria de Saúde do Estado da Bahia(Sesab)</h3>
+      <h3>Acesse: http://www.saude.ba.gov.br/temasdesaude/coronavirus/</h3>
+      <img src ="css/img/logo.png" alt="logo"/>
+
 		
 		
 		</div>
@@ -41,31 +44,80 @@
 
       <div class = "card-group">
         <div class = "card contaminados">
-          <h1>0</h1>
+          <h1 id ="contaminados-value">0</h1>
           <span>Contaminados</span>
         </div>
 
         <div class = "card mortos">
-          <h1>0</h1>
-          <span>mortos</span>
+          <h1 id ="mortos-value">0</h1>
+          <span>Mortos</span>
         </div>
         <div class = "card percentual">
-          <h1>0</h1>
+          <h1 id = "percentual-value">0</h1>
           <span>Percentual de Mortes</span>
         </div>
 
         <div class = "card att">
-          <h1>dd/mm/yyyu</h1>
+          <h1 id ="att-value"></h1>
           <span>Ultima atualização</span>
         </div>
 
       </div>
-       
+      <div class = "group">
+      <div class="chart-container">
+        <canvas id="myChart"></canvas>
+    </div>
+
+
+    <div id = "relatorio" class = "relatorio">
+    </div>
+  </div>
     </section>
 
-    <section id ="graficos" class = "graficos">
 
-    </section>
+
+   <section id="fonte" >
+
+    <div class ="fonte">
+      <h1>Fontes e Licenças</h1>
+      <p><b>Fonte:</b> Secretarias de Saúde das Unidades Federativas, dados tratados por Álvaro Justen e a equipe de volutários Brasil.IO</p>
+      <p><b>Licença:</b> Brasil.IO: boletins epidemiológicos da COVID-19 por municípior por dia, disponivel em: https://brasil.io/dataset/covid19/
+        acesso em 16 de Junho de 2020</p>
+    </div>
+
+    <div class = "creators">
+      <h1>Criado pela SDG - Samaro Developers Groups</h1>
+      <p>Lucas dos Santos Santana Rosa  
+        <a target = "_blank" href="https://github.com/Bluniz">
+          <i class="fab fa-github"></i>
+        </a>
+        <a target = "_blank" href="mailto:lucassantosrosa51@gmail.com">
+         <i class="fas fa-envelope"></i>
+        </a>
+      </p>
+        
+      <p>Felipe Magalhães Pereira 
+        <a target = "_blank" href="https://github.com/felipesses">
+        <i class="fab fa-github"></i>
+      </a>
+      <a target = "_blank" href="mailto:felipeme73@gmail.com">
+       <i class="fas fa-envelope"></i>
+      </a>
+    </p>
+      <p>João Pedro dos Santos Gonçalves 
+        <a target = "_blank" href="https://github.com/EuJota">
+        <i class="fab fa-github"></i>
+      </a>
+      <a target = "_blank" href="mailto:contato.jpsg@gmail.com">
+       <i class="fas fa-envelope"></i>
+      </a>
+    </p>
+    </div>
+   
+     
+
+
+   </section>
 
       
     

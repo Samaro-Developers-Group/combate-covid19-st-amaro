@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 body {
@@ -13,7 +12,7 @@ body {
 
 
 header {
-  height: 100vh;
+  height: 100vh auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,7 +24,7 @@ header {
   font-size: 20px;
   position: fixed;
   width: 100vw;
-  height: 15vh;
+  height: 15vh auto;
   top: 0;
   z-index: 1;
 }
@@ -63,6 +62,7 @@ a:hover{
 .site-title {
   color: black;
   text-align: center;
+  margin-top: 100px;
 }
 
 .site-title {
@@ -74,16 +74,20 @@ header img{
   height: 200px;
 }
 
+header div{
+  padding: 2em;
+  height: 100vh;
+}
+
 .situacao {
   padding: 2em;
   height: 100vh;
 }
 
 .card-group{
-  display: grid;
-  grid-template-columns: auto auto;
+  display: flex;
   justify-content: center;
-  margin-top: 150px;
+  margin-top: 80px;
 }
 
 .card{
@@ -91,11 +95,12 @@ header img{
   margin-left: 10px;
   margin-right: 10px;
   margin-top: 10px;
-  height: 100px;
-  width: 230px;
+  height: 80px ;
+  width: 230px auto;
   font-family: 'Roboto', sans-serif;
+  font-weight: bold;
   text-align: center;
-  font-size: 15px;
+  font-size: 15px auto;
   color: white;
   border-radius: 10px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
@@ -119,7 +124,7 @@ header img{
 }
 
 .contaminados h1, .mortos h1, .percentual h1, .att h1{
-  margin-top: 25px;
+  margin-top: 20px;
 }
 
 
@@ -132,5 +137,108 @@ header img{
 .graficos{
   padding: 2em;
   height: 100vh;
-  background-color: black;
+}
+
+
+
+.chart-container {
+  position: relative;
+  margin-top: 55px;
+  height: 60vh;
+  width: 40vw;
+}
+
+
+.relatorio {
+  width: 300px;
+  height: 300px;
+  overflow: auto;
+  margin-top: 60px;
+  margin-left: 250px;
+
+}
+
+.relatorio th, .relatorio td{
+  border: 1px solid #ddd;
+  padding: 8px;}
+
+.relatorio tr:nth-child(even){background-color: #f2f2f2;}
+
+.relatorio tr:hover {background-color: #ddd;}
+.group{
+  display: flex;
+  flex-direction: row;
+}
+
+.relatorio th{
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #4CAF50; 
+}
+
+
+#fonte{
+  padding: 2em;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.fonte{
+  align-self: center;
+   height: 300px;  
+   width: 500px;
+   text-align: center;
+   border-radius: 10px;
+}
+
+.fonte h1{
+  margin-top: 10px;
+  font-size: 25px;
+}
+
+.fonte p{
+ 
+  margin-top: 45px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.creators{
+  margin-top: 10px;
+  text-align: center;
+  height: 110px;
+}
+
+.creators p{
+margin-top: 5px;
+font-size: 18px;
+} 
+
+i{
+  margin-left: 10px;
+}
+
+.creators a{
+  color: black;
+}
+
+.creators a:hover{
+  color: #4CAF50;
 }
