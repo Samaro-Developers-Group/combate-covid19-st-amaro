@@ -41,7 +41,7 @@
     </header>
 
     <section class ="situacao" id="situacao">
-
+       
       <div class = "card-group">
         <div class = "card contaminados">
           <h1 id ="contaminados-value">0</h1>
@@ -52,6 +52,7 @@
           <h1 id ="mortos-value">0</h1>
           <span>Mortos</span>
         </div>
+        
         <div class = "card percentual">
           <h1 id = "percentual-value">0</h1>
           <span>Percentual de Mortes</span>
@@ -63,14 +64,24 @@
         </div>
 
       </div>
+
+       <div class ="group">
+        <select name = "cities" class = "cities">
+          <option value = "Santo+Amaro"> Santo Amaro</option>
+          <option value = "São%20Francisco%20do%20Conde"> São Francisco do Conde</option>
+          <option value = "Saubara "> Saubara </option>
+          <option value = "Cachoeira"> Cachoeira</option>
+          <option value = "Maragogipe"> Maragogipe</option>
+          <option value = "Muritiba"> Muritiba</option>
+        </select>
+       </div>
+
       <div class = "group">
       <div class="chart-container">
         <canvas id="myChart"></canvas>
     </div>
 
-
-    <div id = "relatorio" class = "relatorio">
-    </div>
+    <div id = "relatorio" class = "relatorio"></div>
   </div>
     </section>
 

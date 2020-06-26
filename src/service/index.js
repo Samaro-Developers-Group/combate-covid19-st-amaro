@@ -1,5 +1,5 @@
 const $ = document.querySelector.bind(document);
-const url = 'https://brasil.io/api/dataset/covid19/caso_full/data?state=BA&city=Santo+Amaro';
+const url = 'https://brasil.io/api/dataset/covid19/caso_full/data?state=BA&city=';
 let mostCurrentData = {};
 
 let covidEvolutionDate1= [];
@@ -16,20 +16,27 @@ var ctx = document.getElementById('myChart').getContext('2d');
 const div = document.querySelector('#relatorio');
 
 
-window.addEventListener('load', async () => {
+const select = document.querySelector(".cities");
+let city = select.options[select.selectedIndex].value;
+
+
+window.addEventListener('load', loadResponse);
+select.addEventListener('change', changeDataBySelect);
+
+async function loadResponse(){
     let response =
-        await fetch(url).then((res) => {
-            res.json().then((data) => {
-                let result = data.results
+    await fetch(url+city).then((res) => {
+        res.json().then((data) => {
+            let result = data.results;
 
-                getMostRecenteDataAsJson(result)
-                getDataAsArray(result)
-            })
-        }).catch((err) => {
-            console.log(err);
+            getMostRecenteDataAsJson(result);
+            getDataAsArray(result);
         })
-});
+    }).catch((err) => {
+        console.log(err);
+    });
 
+}
 
 function getMostRecenteDataAsJson(result){
     mostCurrentData = {
@@ -50,6 +57,7 @@ function getMostRecenteDataAsJson(result){
     return mostCurrentData
 }
 
+//Altera aqui
 function getDataAsArray(result){
     result.forEach(item => {
         let split = item.date.split('-')
@@ -137,5 +145,16 @@ function generateRelatoryData(internCovidData, internCovidAmount){
 
 
 
+function changeDataBySelect(){
+     city = select.options[select.selectedIndex].value;
+     mostCurrentData = {};
+     covidEvolutionDate1= [];
+     covidEvolutionQtd1 = [];
+     covidEvolutionDate2= [];
+     covidEvolutionQtd2 = [];
+
+     loadResponse();
+ 
+}
 
 
