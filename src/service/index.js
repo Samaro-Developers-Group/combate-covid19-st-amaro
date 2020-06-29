@@ -6,6 +6,7 @@ let covidEvolutionDate1= [];
 let covidEvolutionQtd1 = [];
 let covidEvolutionDate2= [];
 let covidEvolutionQtd2 = [];
+let clickOnSelect = 0;
 
 
 const contaminados = document.querySelector("#contaminados-value");
@@ -120,8 +121,6 @@ function createGraph(internCovidDatacg, internCovidAmountcg){
 }
 
 function generateRelatoryData(internCovidData, internCovidAmount){
-
-
   let content = '<h1>Relatório:</h1>'
    + '<table >' 
       + '<tr>'
@@ -147,6 +146,7 @@ function generateRelatoryData(internCovidData, internCovidAmount){
 
 function changeDataBySelect(){
      city = select.options[select.selectedIndex].value;
+     countAndBlockSelect();
      mostCurrentData = {};
      covidEvolutionDate1= [];
      covidEvolutionQtd1 = [];
@@ -154,7 +154,16 @@ function changeDataBySelect(){
      covidEvolutionQtd2 = [];
 
      loadResponse();
- 
 }
 
+// Depois da interrogação precisa chamar
+function countAndBlockSelect() {
+    clickOnSelect === 6 ? showAlertAndResetClickCount() : clickOnSelect ++;
+}
+
+
+function showAlertAndResetClickCount() {
+    //Mostrar o alert e bloquear o dialog (nao faço ideia de como fazer isso, mas acredito que um disable deve funcionar)
+    clickOnSelect = 0;
+}
 
