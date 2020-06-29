@@ -1,8 +1,11 @@
 const $ = document.querySelector.bind(document);
-const url = 'https://brasil.io/api/dataset/covid19/caso_full/data?state=BA&city=Santo+Amaro';
+const url = 'https://brasil.io/api/dataset/covid19/caso_full/data?state=BA&city=';
 let mostCurrentData = {};
-var covidEvolutionDate= [];
-var covidEvolutionQtd = [];
+
+let covidEvolutionDate1= [];
+let covidEvolutionQtd1 = [];
+let covidEvolutionDate2= [];
+let covidEvolutionQtd2 = [];
 
 
 const contaminados = document.querySelector("#contaminados-value");
@@ -13,22 +16,27 @@ var ctx = document.getElementById('myChart').getContext('2d');
 const div = document.querySelector('#relatorio');
 
 
-window.addEventListener('load', async () => {
+const select = document.querySelector(".cities");
+let city = select.options[select.selectedIndex].value;
+
+
+window.addEventListener('load', loadResponse);
+select.addEventListener('change', changeDataBySelect);
+
+async function loadResponse(){
     let response =
-        await fetch(url).then((res) => {
-            res.json().then((data) => {
-                let result = data.results
+    await fetch(url+city).then((res) => {
+        res.json().then((data) => {
+            let result = data.results;
 
-                getMostRecenteDataAsJson(result)
-                getDataAsArray(result)
-                createGraph()
-                generateRelatoryData()
-            })
-        }).catch((err) => {
-            console.log(err);
+            getMostRecenteDataAsJson(result);
+            getDataAsArray(result);
         })
-});
+    }).catch((err) => {
+        console.log(err);
+    });
 
+}
 
 function getMostRecenteDataAsJson(result){
     mostCurrentData = {
@@ -49,33 +57,41 @@ function getMostRecenteDataAsJson(result){
     return mostCurrentData
 }
 
+//Altera aqui
 function getDataAsArray(result){
     result.forEach(item => {
         let split = item.date.split('-')
-        covidEvolutionDate.push(split[2] + '/' + split[1] + '/' + split[0]);
-        covidEvolutionQtd.push(item.last_available_confirmed)
+        covidEvolutionDate1.push(split[2] + '/' + split[1] + '/' + split[0]);
+        covidEvolutionDate2.push(split[2] + '/' + split[1] + '/' + split[0]);
+        covidEvolutionQtd1.push(item.last_available_confirmed)
+        covidEvolutionQtd2.push(item.last_available_confirmed)
     });
 
-    
+    createGraph(covidEvolutionDate1, covidEvolutionQtd1)
+    generateRelatoryData(covidEvolutionDate2, covidEvolutionQtd2)
     return result
 }
 
 
 
 
-function createGraph(){
+function createGraph(internCovidDatacg, internCovidAmountcg){
+    const reverseQtd = internCovidAmountcg.reverse();
+    const reverseDate = internCovidDatacg.reverse();
 
-    var date ={
-        labels: covidEvolutionDate,
+    console.log(`print 1 ${reverseDate}`)
+
+    let date ={
+        labels: reverseDate,
         datasets: [{
             label: 'Quantidade de  contaminados:',
             backgroundColor: "rgb(11,72,107)",
-            data: covidEvolutionQtd,
+            data: reverseQtd,
            
         }]
     };
     
-    var options = {
+    let options = {
         maintainAspectRatio: false,
         scales: {
           yAxes: [{
@@ -95,7 +111,7 @@ function createGraph(){
     }
     
     
-    var myBarChart = new Chart(ctx, {
+    let myBarChart = new Chart(ctx, {
         type: 'bar',
         data: date,
         options: options
@@ -103,7 +119,9 @@ function createGraph(){
 
 }
 
-function generateRelatoryData(){
+function generateRelatoryData(internCovidData, internCovidAmount){
+
+
   let content = '<h1>Relatório:</h1>'
    + '<table >' 
       + '<tr>'
@@ -113,23 +131,30 @@ function generateRelatoryData(){
 
   div.removeChild;
 
-  for(var i =0; i<covidEvolutionDate.length; i++) {
+  for(let i =0; i<internCovidData.length; i++) {
       content += '<tr>' 
-      +'<td>' + covidEvolutionDate[i] + '</td>'
-      +'<td>' + covidEvolutionQtd[i] + '</td>'
+      +'<td>' + internCovidData[i] + '</td>'
+      +'<td>' + internCovidAmount[i] + '</td>'
       + '</tr>'
-      
-      
   }
 
   content += '</table>';
 
   div.innerHTML = content;
-
-
 }
 
 
 
+function changeDataBySelect(){
+     city = select.options[select.selectedIndex].value;
+     mostCurrentData = {};
+     covidEvolutionDate1= [];
+     covidEvolutionQtd1 = [];
+     covidEvolutionDate2= [];
+     covidEvolutionQtd2 = [];
+
+     loadResponse();
+ 
+}
 
 
